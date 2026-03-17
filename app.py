@@ -76,7 +76,8 @@ def load_data(grain):
 
     return session.sql(query).to_pandas()
 
-df = load_data(time_grain)
+with st.spinner("Fetching data from Snowflake..."):
+    df = load_data(time_grain)
 
 if df.empty:
     st.error("No data available")
